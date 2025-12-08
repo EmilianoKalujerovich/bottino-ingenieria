@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bottino Ingeniería — Ingeniería Eléctrica en Alta y Media Tensión</title>
+    <meta name="description" content="Desarrollamos proyectos de ingeniería eléctrica, sistemas SCADA, configuración de equipos de protección y sistemas de comunicación industrial con más de 60 años de experiencia." />
+    <meta name="theme-color" content="#071028" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        /* Design tokens */
+        :root{
+            /* Changed brand color to a deeper blue/indigo for an industrial/engineering feel */
+            --brand: #1e3a8a; /* indigo-800 */ 
+            --accent: #22c55e; /* emerald-500, kept for contrast/CTA */
+            --bg: #0b1220;
+            --muted: #94a3b8;
+        }
+        /* Adjusted background gradient to a darker tone for a professional look */
+        body { background: linear-gradient(180deg,#040e20 0%, #071028 100%); }
+
+        /* Small custom styles */
+        .glass { background: rgba(255,255,255,0.03); backdrop-filter: blur(6px); }
+        /* Adjusted hero flow gradient to better match the site's primary colors */
+        .hero-flow { background: linear-gradient(135deg, rgba(30,58,138,0.1), rgba(34,197,94,0.03)); }
+        
+        /* Animated flow: Using site-specific items (RTU, Gateway, IED) as nodes */
+        .flow-node { 
+            background:var(--brand); 
+            animation: pulse-node 3s infinite ease-in-out; 
+            box-shadow: 0 0 10px rgba(30, 58, 138, 0.5);
+        }
+        .flow-node:nth-child(2){ animation-delay: 0.5s; background:#3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
+        .flow-node:nth-child(3){ animation-delay: 1s; background:var(--accent); box-shadow: 0 0 10px rgba(34, 197, 94, 0.5); }
+        @keyframes pulse-node { 
+            0%{ transform: scale(1) } 
+            50%{ transform: scale(1.05) } 
+            100%{ transform: scale(1) }
+        }
+
+        /* Sticky header small shadow */
+        .sticky-header { position: sticky; top: 0; z-index: 40; backdrop-filter: blur(6px); background: rgba(3,7,18,0.35); border-bottom: 1px solid rgba(255,255,255,0.02); }
+
+        /* Accessibility focus */
+        .focus-outline:focus { outline: 3px solid rgba(30,58,138,0.25); outline-offset: 4px; border-radius: 8px; }
+
+        /* Modal */
+        .modal-backdrop { background: linear-gradient(90deg, rgba(2,6,23,0.6), rgba(2,6,23,0.85)); }
+    </style>
+</head>
+<body class="antialiased text-slate-100">
+
+    <header class="sticky-header">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-indigo-800 to-emerald-500 flex items-center justify-center font-bold">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bolt"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><path d="M3.27 6.47 12 11l8.73-4.53"></path><path d="M12 22v-8"></path></svg>
+                </div>
+                <div>
+                    <a href="#home" class="text-lg md:text-xl font-semibold leading-none">Bottino Ingeniería</a>
+                    <div class="text-xs text-slate-400 -mt-0.5">Servicios de Ingeniería</div>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center gap-6 text-slate-300">
+                <a href="#servicios" class="hover:text-white focus-outline">Servicios</a>
+                <a href="#experiencia" class="hover:text-white focus-outline">Experiencia</a>
+                <a href="#proyectos" class="hover:text-white focus-outline">Proyectos</a>
+                <a href="#contacto" class="hover:text-white focus-outline">Contacto</a>
+                <a href="#" class="text-white font-medium border-r border-slate-700 pr-3">ES</a>
+                <a href="#" class="text-slate-400 hover:text-white">EN</a>
+            </nav>
+
+            <div class="flex items-center gap-3">
+                <button id="openContact" class="px-4 py-2 bg-emerald-500 hover:bg-emerald-400 rounded-md text-slate-900 font-medium focus-outline">Consultar proyecto</button>
+                <button id="openExamplesMobile" class="md:hidden px-3 py-2 border border-slate-700 rounded-md text-slate-300 focus-outline">Menú</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="home" class="max-w-6xl mx-auto px-6">
+
+        <section class="grid md:grid-cols-2 gap-10 items-center py-20">
+            <div class="md:pr-6">
+                <div class="inline-block px-3 py-1 mb-4 rounded-full bg-slate-800 text-slate-300 text-sm font-medium border border-indigo-800">
+                    Más de 60 años de experiencia
+                </div>
+                <h1 class="text-3xl md:text-5xl font-extrabold leading-tight">Ingeniería Eléctrica en <span class="text-indigo-400">Alta</span> y <span class="text-indigo-400">Media Tensión</span></h1>
+                <p class="mt-5 text-slate-300 max-w-2xl text-lg">Desarrollamos proyectos de ingeniería eléctrica, sistemas <span class="font-bold">SCADA</span>, configuración de equipos de <span class="font-bold">protección</span> y sistemas de <span class="font-bold">comunicación industrial</span>. Confianza y tranquilidad respaldadas por décadas de experiencia.</p>
+
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <button id="openContactHero" class="px-6 py-3 bg-emerald-500 hover:bg-emerald-400 rounded-md font-medium text-slate-900 focus-outline">Solicitar cotización</button>
+                    <a href="#servicios" class="px-6 py-3 border border-slate-700 rounded-md text-slate-300 hover:border-slate-500">Ver servicios</a>
+                </div>
+
+                <div class="mt-8 grid grid-cols-2 gap-3 text-sm text-slate-400 max-w-md">
+                    <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-emerald-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>Estaciones Unifilares/Trifilares</div>
+                    <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-emerald-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>Configuración SCADA, RTU</div>
+                    <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-emerald-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>IEDs de protección</div>
+                    <div class="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check-circle text-emerald-500"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><path d="m9 11 3 3L22 4"></path></svg>Sistemas IEC61850, DNP3, ModBUS</div>
+                </div>
+            </div>
+
+            <div class="hero-flow rounded-2xl p-6 glass">
+                <div class="flex flex-col gap-4">
+                    <div class="bg-slate-900 rounded-lg p-4 border border-slate-800">
+                        <div class="text-xs text-slate-400 mb-2">Sistema SCADA</div>
+                        <div class="grid grid-cols-3 gap-3">
+                            <div class="flow-node p-3 rounded-md text-xs text-center font-medium">RTU</div>
+                            <div class="flow-node p-3 rounded-md text-xs text-center font-medium">Gateway</div>
+                            <div class="flow-node p-3 rounded-md text-xs text-center font-medium">IED</div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-between items-center px-4">
+                        <div class="h-1 w-full bg-slate-700 rounded-full"></div>
+                        <div class="w-10 text-center text-xs text-slate-400 mx-2">Data</div>
+                        <div class="h-1 w-full bg-slate-700 rounded-full"></div>
+                    </div>
+
+                    <div class="bg-slate-900 rounded-lg p-4 border border-slate-800">
+                        <div class="text-xs text-slate-400 mb-2">Protocolos Industriales</div>
+                        <div class="grid grid-cols-4 gap-3">
+                            <div class="p-2 bg-slate-800 rounded-md text-xs text-center text-slate-300">DNP3</div>
+                            <div class="p-2 bg-slate-800 rounded-md text-xs text-center text-slate-300">ModBUS</div>
+                            <div class="p-2 bg-slate-800 rounded-md text-xs text-center text-slate-300">IEC-104</div>
+                            <div class="p-2 bg-slate-800 rounded-md text-xs text-center text-slate-300">IEC61850</div>
+                        </div>
+                        <div class="mt-4 text-center text-xs text-slate-400">Comunicación en tiempo real</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="py-12 border-t border-slate-800">
+            <h2 class="text-2xl font-bold">Nuestros Servicios</h2>
+            <p class="text-slate-400 mt-2 max-w-3xl">Soluciones integrales para proyectos eléctricos industriales, desde el análisis hasta la configuración y puesta en marcha.</p>
+
+            <div class="mt-6 grid md:grid-cols-3 gap-6">
+                
+                <article class="p-6 bg-slate-800 rounded-xl border border-slate-700">
+                    <div class="flex items-start justify-between">
+                        <h3 class="font-semibold text-lg">Desarrollo de Estaciones</h3>
+                        <div class="text-2xl text-indigo-400"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-zap"><path d="M12 2v8l-4 4h8l-4 8"></path></svg></div>
+                    </div>
+                    <p class="mt-3 text-slate-300 text-sm">Ingeniería de estaciones Unifilares, Trifilares y Enclavamientos. Diseño de equipos de playa completos.</p>
+                    <ul class="mt-4 text-xs text-slate-400 space-y-2">
+                        <li>• Análisis y confección de esquemas funcionales</li>
+                        <li>• Desarrollo de ingenierías de protección</li>
+                        <li>• Control y configuración de sistemas</li>
+                    </ul>
+                </article>
+
+                <article class="p-6 bg-slate-800 rounded-xl border border-slate-700">
+                    <div class="flex items-start justify-between">
+                        <h3 class="font-semibold text-lg">Sistemas SCADA y RTU</h3>
+                        <div class="text-2xl text-emerald-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-layout-dashboard"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg></div>
+                    </div>
+                    <p class="mt-3 text-slate-300 text-sm">Configuración completa de sistemas de supervisión y control. Integración con Gateways y protocolos industriales.</p>
+                    <ul class="mt-4 text-xs text-slate-400 space-y-2">
+                        <li>• Configuración SCADA completa</li>
+                        <li>• RTU y Gateways asociados</li>
+                        <li>• Integración de protocolos</li>
+                    </ul>
+                </article>
+
+                <article class="p-6 bg-slate-800 rounded-xl border border-slate-700">
+                    <div class="flex items-start justify-between">
+                        <h3 class="font-semibold text-lg">IEDs y Comunicación</h3>
+                        <div class="text-2xl text-yellow-500"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-settings-2"><path d="M20 7h-9"></path><path d="M14 17h-5"></path><circle cx="17" cy="7" r="3"></circle><circle cx="6" cy="17" r="3"></circle></svg></div>
+                    </div>
+                    <p class="mt-3 text-slate-300 text-sm">Configuración de IEDs de protección y sistemas de comunicación IEC61850, DNP3, ModBUS, IEC-104.</p>
+                    <ul class="mt-4 text-xs text-slate-400 space-y-2">
+                        <li>• IEDs de diferentes marcas</li>
+                        <li>• Protocolos industriales estándar</li>
+                        <li>• Testing y comisionado</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="experiencia" class="py-12 border-t border-slate-800">
+            <h2 class="text-2xl font-bold">Experiencia y Alcance</h2>
+            <p class="text-slate-400 mt-2 max-w-3xl">La experiencia y el conocimiento nos respaldan a la hora de brindar confianza y tranquilidad a nuestros clientes, siendo especialistas en el área de ingeniería Eléctrica en Alta y media tensión.</p>
+
+            <div class="mt-6 grid md:grid-cols-2 gap-6">
+                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700">
+                    <h3 class="text-xl font-semibold mb-4">Nuestro Alcance</h3>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-4xl font-bold text-indigo-400">60+</div>
+                            <div class="text-sm text-slate-400 mt-1">Años de experiencia</div>
+                        </div>
+                        <div>
+                            <div class="text-4xl font-bold text-indigo-400">500+</div>
+                            <div class="text-sm text-slate-400 mt-1">Proyectos entregados</div>
+                        </div>
+                    </div>
+                    <ul class="mt-6 text-sm text-slate-300 space-y-2">
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check inline-block mr-2 text-emerald-500"><path d="M20 6 9 17l-5-5"></path></svg>Análisis y confección de esquemas funcionales de estación</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check inline-block mr-2 text-emerald-500"><path d="M20 6 9 17l-5-5"></path></svg>Desarrollos de ingeniería de Protección, Control y Configuración de los Sistemas</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check inline-block mr-2 text-emerald-500"><path d="M20 6 9 17l-5-5"></path></svg>Configuración de IEDs de protección de diferentes marcas</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-check inline-block mr-2 text-emerald-500"><path d="M20 6 9 17l-5-5"></path></svg>Configuración de SCADA, RTU, Gateways y asociados</li>
+                    </ul>
+                </div>
+
+                <div class="p-6 bg-slate-900 rounded-xl border border-slate-700">
+                    <h3 class="text-xl font-semibold mb-4">Ingeniería de Detalle</h3>
+                    <p class="text-slate-400 text-sm">Ofrecemos ingeniería detallada en:</p>
+                    <ul class="mt-4 text-sm text-slate-300 space-y-2">
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bolt inline-block mr-2 text-indigo-400"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><path d="M3.27 6.47 12 11l8.73-4.53"></path><path d="M12 22v-8"></path></svg>Alta y media tensión</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-key-round inline-block mr-2 text-indigo-400"><path d="M2 18v3c0 .6.4 1 1 1h4v-3h3v-3h2l1.4-1.4a6.5 6.5 0 1 0-4-4Z"></path><circle cx="16.5" cy="7.5" r=".5"></circle></svg>Proyectos llave en mano</li>
+                        <li><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text inline-block mr-2 text-indigo-400"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>Ingeniería de detalle</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="proyectos" class="py-12 border-t border-slate-800">
+            <h2 class="text-2xl font-bold">Proyectos Destacados</h2>
+            <p class="text-slate-400 mt-2 max-w-2xl">Casos de éxito en diferentes sectores industriales.</p>
+
+            <div class="mt-6 grid md:grid-cols-2 gap-6">
+                
+                <article class="p-6 bg-slate-800 rounded-xl border border-slate-700">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="font-semibold">Estación Transformadora - Sector Minero</h3>
+                            <p class="text-slate-300 mt-2 text-sm"><span class="font-bold">132KV / 33KV / 13.8KV</span></p>
+                            <p class="text-slate-400 mt-2 text-xs">Desarrollo completo de ingeniería de protección, SCADA y configuración de IEDs para estación trifilar de media y alta tensión.</p>
+                        </div>
+                        <div class="text-sm text-emerald-500">Completado</div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs px-3 py-1 rounded bg-slate-700">SCADA</span>
+                        <span class="text-xs px-3 py-1 rounded bg-slate-700">IEC61850</span>
+                        <span class="text-xs px-3 py-1 rounded bg-slate-700">Alta tensión</span>
+                    </div>
+                </article>
+
+                <article class="p-6 bg-slate-800 rounded-xl border border-slate-700">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="font-semibold">Sistema de Comunicación Industrial</h3>
+                            <p class="text-slate-300 mt-2 text-sm"><span class="font-bold">Planta Petroquímica</span></p>
+                            <p class="text-slate-400 mt-2 text-xs">Implementación de red de comunicaciones DNP3 y ModBUS para integración de sistemas de control distribuido.</p>
+                        </div>
+                        <div class="text-sm text-emerald-500">Completado</div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs px-3 py-1 rounded bg-slate-700">DNP3</span>
+                        <span class="text-xs px-3 py-1 rounded bg-slate-700">ModBUS</span>
+                        <span class="text-xs px-3 py-1 rounded bg-slate-700">RTU</span>
+                    </div>
+                </article>
+
+                 <article class="p-6 bg-slate-800 rounded-xl border border-slate-700 md:col-span-2">
+                    <div class="flex items-start justify-between">
+                        <div>
+                            <h3 class="font-semibold">Automatización de Subestación</h3>
+                            <p class="text-slate-300 mt-2 text-sm"><span class="font-bold">Distribución Eléctrica</span></p>
+                            <p class="text-slate-400 mt-2 text-xs">Configuración completa de IEDs de protección y sistema de automatización basado en IEC61850. Reducción de tiempos de operación y mantenimiento.</p>
+                        </div>
+                        <div class="text-sm text-emerald-500">Completado</div>
+                    </div>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                        <span class="text-xs px-3 py-1 rounded bg-slate-700">IEC61850</span>
+                        <span class="text-xs px-3 py-1 rounded bg-slate-700">IEDs</span>
+                        <span class="text-xs px-3 py-1 rounded bg-slate-700">Automatización</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="contacto" class="py-12 border-t border-slate-800">
+            <div class="p-8 bg-indigo-900/30 rounded-xl border border-indigo-700/50 text-center">
+                <h2 class="text-2xl font-bold">¿Tienes un proyecto de Alta o Media Tensión?</h2>
+                <p class="text-slate-300 mt-3 max-w-3xl mx-auto">Confía en nuestra experiencia de más de 60 años. Déjanos tus datos y un especialista se pondrá en contacto a la brevedad.</p>
+                <button id="openContactFooter" class="mt-6 px-8 py-3 bg-emerald-500 hover:bg-emerald-400 rounded-md font-medium text-slate-900 focus-outline">Solicitar cotización personalizada</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="mt-16 border-t border-slate-800 py-6">
+        <div class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="text-sm text-slate-400">© Bottino Ingeniería • Más de 60 años de experiencia en el sector</div>
+            <div class="flex gap-4 text-slate-400">
+                <a href="#contacto" class="hover:text-white">Contacto</a>
+                <a href="#servicios" class="hover:text-white">Servicios</a>
+                <a href="#proyectos" class="hover:text-white">Proyectos</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="contactModal" class="fixed inset-0 hidden items-center justify-center z-50">
+        <div class="absolute inset-0 modal-backdrop" onclick="closeModal()"></div>
+        <div class="relative z-60 max-w-xl mx-auto p-6 bg-slate-900 rounded-2xl border border-slate-700">
+            <div class="flex items-start justify-between gap-4">
+                <div>
+                    <h3 class="text-xl font-semibold">Consultar proyecto</h3>
+                    <p class="text-slate-400 text-sm mt-1">Ingreso rápido — le responderemos con los siguientes pasos. Respuesta típica en 1–2 días hábiles.</p>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white">✕</button>
+            </div>
+
+            <form id="modalForm" action="https://formspree.io/f/mrbryjjb" method="POST" class="mt-4 grid gap-3" enctype="multipart/form-data">
+                <div class="grid md:grid-cols-2 gap-3">
+                    <input name="name" required placeholder="Nombre completo" class="p-3 rounded-md bg-slate-800 border border-slate-700" />
+                    <input name="company" placeholder="Empresa (opcional)" class="p-3 rounded-md bg-slate-800 border border-slate-700" />
+                </div>
+                <input name="email" type="email" required placeholder="Correo electrónico" class="p-3 rounded-md bg-slate-800 border border-slate-700" />
+                <textarea name="message" required placeholder="Describa brevemente el proyecto (ej: 'Ingeniería básica de una subestación 132kV')" rows="4" class="p-3 rounded-md bg-slate-800 border border-slate-700"></textarea>
+                <label class="text-sm text-slate-400">Adjuntar archivo (opcional)</label>
+                <input name="attachment" type="file" class="p-2 bg-slate-800 rounded-md border border-slate-700" />
+
+                <div class="flex items-center gap-3">
+                    <button type="submit" class="px-5 py-2 bg-emerald-500 rounded-md text-slate-900 font-medium">Enviar solicitud</button>
+                    <button type="button" onclick="closeModal()" class="px-4 py-2 border border-slate-700 rounded-md text-slate-300">Cancelar</button>
+                    <div id="modalFormStatus" class="text-sm text-slate-300"></div>
+                </div>
+
+                <input type="text" name="_gotcha" style="display:none" />
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const openContact = document.getElementById('openContact');
+        const openContactHero = document.getElementById('openContactHero');
+        const openContactFooter = document.getElementById('openContactFooter');
+        const contactModal = document.getElementById('contactModal');
+        const modalForm = document.getElementById('modalForm');
+        const modalFormStatus = document.getElementById('modalFormStatus');
+
+        function openModal(){
+            contactModal.classList.remove('hidden');
+            contactModal.classList.add('flex');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeModal(){
+            contactModal.classList.add('hidden');
+            contactModal.classList.remove('flex');
+            document.body.style.overflow = '';
+        }
+
+        openContact && openContact.addEventListener('click', openModal);
+        openContactHero && openContactHero.addEventListener('click', openModal);
+        openContactFooter && openContactFooter.addEventListener('click', openModal);
+
+        // Simple UX for form submit: show sending message but let Formspree handle actual POST
+        modalForm.addEventListener('submit', (e) => {
+            modalFormStatus.textContent = 'Enviando...';
+            // let browser perform the POST to Formspree which will redirect to success if configured
+            setTimeout(() => {
+                modalFormStatus.textContent = 'Si no es redirigido, revise su correo para la confirmación.';
+            }, 1300);
+        });
+
+        // Graceful fallback: close modal on ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+
+</body>
+</html>
